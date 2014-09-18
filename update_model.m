@@ -1,10 +1,10 @@
-rayDeathRate = .05;
+rayDeathRate = .01;
 rayCrit = 2*10^6;
 sharkCrit = 10^6;
 scallopCrit = 10^7;
 rayBirthRate = 0.05;
 scallopBirthRate = 0.10;
-sharkBirthRate = 0.05;
+sharkBirthRate = 0.01;
 poachRate = 0.05;
 NEWsharks = sharks + sharkBirthRate * sharks - poachRate * sharks;
 NEWrays = rays * (1 + rayBirthRate*(1-sharks/sharkCrit)-rayDeathRate*(1-scallops/scallopCrit));
