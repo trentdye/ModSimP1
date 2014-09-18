@@ -15,5 +15,4 @@ function res = model_system(initialSharks, initialRays, initialScallops, initial
         plot(i, rays, 'g*');
         plot(i scallops, 'b*');
     end
-        
 end
