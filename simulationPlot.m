@@ -1,10 +1,13 @@
 function res = simulationPlot()
+    
+    %CONSTANTS
     action = 1;
-    stop = 100;
+    stop = 80;
     yearStart = -10;
     [R, S] = simulation(stop-yearStart, 0, 4.5*10^7);
     [Rnew, Snew] = simulation(stop-yearStart, 1, 4.5*10^7);
     
+    %GRAPH OPTIONS
     clf;
     hold on;
     set(gca, 'FontSize', 12); 
