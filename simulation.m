@@ -1,15 +1,17 @@
 function [Rarr,Sarr] = simulation(stop, trigger, level)
     
     %CONSTANTS
-    R(1) = 30000000;
-    S(1) = 200000;
-    hello = 1;
+    R(1) = 0.05;
+    S(1) = 0.3;
     
-    betaS = 0.6; %natural net scallop birth rate
-    criticalS = 156000000;
+    betaS = 0.06; %natural net scallop birth rate dont change
     
-    gammaR = -0.7; %natural net ray death rate
-    criticalR = 100000000;
+    criticalS = 3.5;
+    rS = 0.4;
+    carryS = 3;
+    gammaR = 0.5; %natural net ray death rate
+    
+    criticalR = 4; % dont change
     
     %MAIN LOOP
     for i=1:stop
@@ -48,6 +50,7 @@ function [Rarr,Sarr] = simulation(stop, trigger, level)
 
     function res = deltaS(r, s)
         lotkeChange = betaS*(1-r/criticalR) * s;
-        res = lotkeChange;
+        carryChange = rS*s*(1-r/carryS);
+        res = carryChange;
     end
 end

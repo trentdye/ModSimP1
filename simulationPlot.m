@@ -1,8 +1,8 @@
 function res = simulationPlot()
-    
+
     %CONSTANTS
     action = 0;
-    stop = 80;
+    stop = 10;
     yearStart = -10;
     [R, S] = simulation(stop-yearStart, 0, 4.5*10^7);
     [Rnew, Snew] = simulation(stop-yearStart, 1, 4.5*10^7);
@@ -12,17 +12,20 @@ function res = simulationPlot()
     hold on;
     set(gca, 'FontSize', 12); 
     
+    %
+    
     %GRAPH HISTORICAL RAY POPULATION
     subplot(2, 1, 1);
     load ray.csv;
-    plot(ray(:,1)-34, ray(:, 2), 'g-', 'LineWidth', 3);
+    plot(ray(:,1)-34, ray(:, 2), 'g*', 'LineWidth', 3);
     
     %GRAPH HISTORICAL SCALLOP POPULATION
     subplot(2, 1, 2);
     load scallop.csv;
-    plot(scallop(:,1)-32, scallop(:, 2), '-', 'LineWidth', 3);
+    plot(scallop(:,1)-32, scallop(:, 2), 'b*', 'LineWidth', 3);
     
-    %{
+    %
+    %
     
     %RAY PLOT
     subplot(2, 1, 1)
@@ -48,6 +51,4 @@ function res = simulationPlot()
     xlabel('Time (Years)');
     ylabel('Scallop Population (metric tons)');
     xlim([yearStart stop]);
-    
-    %}
 end
