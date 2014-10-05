@@ -3,7 +3,7 @@ function res = simulationPlot()
     %CONSTANTS
     action = 0;
     stop = 10;
-    yearStart = -10;
+    yearStart = -35;
     [R, S] = simulation(stop-yearStart, 0, 4.5*10^7);
     [Rnew, Snew] = simulation(stop-yearStart, 1, 4.5*10^7);
     
@@ -16,8 +16,8 @@ function res = simulationPlot()
     
     %GRAPH HISTORICAL RAY POPULATION
     subplot(2, 1, 1);
-    load ray.csv;
-    plot(ray(:,1)-34, ray(:, 2), 'g*', 'LineWidth', 3);
+    load ray2.csv;
+    plot(ray2(:,1)-34, ray2(:, 2), 'g*', 'LineWidth', 3);
     
     %GRAPH HISTORICAL SCALLOP POPULATION
     subplot(2, 1, 2);

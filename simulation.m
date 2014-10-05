@@ -1,17 +1,14 @@
 function [Rarr,Sarr] = simulation(stop, trigger, level)
     
     %CONSTANTS
-    R(1) = 0.05;
+    R(1) = 0.00056;
     S(1) = 0.3;
     
-    betaS = 0.06; %natural net scallop birth rate dont change
-    
-    criticalS = 3.5;
-    rS = 0.4;
-    carryS = 3;
-    gammaR = 0.5; %natural net ray death rate
-    
-    criticalR = 4; % dont change
+    carryR = 1.75;
+    scallopBirthRate = 0.1;
+    carryS = 2;
+    rayBirthRate = 0.3; %natural net ray death rate
+    rayKillScallopRate = 0.16;
     
     %MAIN LOOP
     for i=1:stop
@@ -33,11 +30,11 @@ function [Rarr,Sarr] = simulation(stop, trigger, level)
 
     function res = deltaR(r, s)
         if trigger == 0
-            lotkeChange = gammaR * (1- s/criticalS) * r;
-            res = lotkeChange;
+            carryChange = rayBirthRate * (1- r/carryR) * r;
+            res = carryChange;
         end
-        if trigger == 1
-            lotkeChange = gammaR * (1- s/criticalS) * r;
+        if trigger == 1 %%not yet modified for carrying capacity
+            lotkeChange = rayBirthRate * (1- r/carryR) * r;
             if r > level
                 lotkeChange = lotkeChange - 0.02*r;
                 res = lotkeChange;
@@ -49,8 +46,8 @@ function [Rarr,Sarr] = simulation(stop, trigger, level)
 %% DELTA S
 
     function res = deltaS(r, s)
-        lotkeChange = betaS*(1-r/criticalR) * s;
-        carryChange = rS*s*(1-r/carryS);
+        carryChange = scallopBirthRate*s*(1-s/carryS);
+        carryChange = carryChange - rayKillScallopRate*r;
         res = carryChange;
     end
 end
