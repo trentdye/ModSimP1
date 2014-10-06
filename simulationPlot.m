@@ -12,7 +12,7 @@ function res = simulationPlot()
     %GRAPH OPTIONS
     clf;
     hold on;
-    set(gca, 'FontSize', 13); 
+    set(gca, 'FontSize', 15); 
     
     %
     
